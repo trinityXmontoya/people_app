@@ -16,4 +16,14 @@ require_relative '../app/models/person'
       expect(@elon.age).to eq(43)
     end
 
+    it 'can drink if over 21' do
+      expect(@elon.have_a_drink).to eq(true)
+      expect(@elon.num_of_drinks).to eq(3)
+    end
+
+    it 'cannot have more than 3 drinks' do
+      @elon.have_a_drink
+      expect(@elon.have_a_drink).to eq("Go home you're drunk")
+    end
+
   end#end person
