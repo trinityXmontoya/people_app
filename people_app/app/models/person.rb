@@ -1,7 +1,6 @@
 require 'date'
 
 class Person < ActiveRecord::Base
-  self.table_name="people"
 
   def name
     return "#{first_name} #{last_name}"
@@ -13,8 +12,7 @@ class Person < ActiveRecord::Base
 
   def age
     now = Time.now.to_date
-    birthday=Date.parse(birthday)
-    (now.year - birthday.year) - (birthday.change(year: now.year) > now ? 1 : 0)
+    return ((now.year) - (self.birthdate.year) - (self.birthdate.change(year: now.year) > now ? 1 : 0))
   end
 
   def have_a_drink
@@ -42,3 +40,4 @@ class Person < ActiveRecord::Base
   end
 
 end
+
