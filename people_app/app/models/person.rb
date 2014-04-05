@@ -1,19 +1,20 @@
 require 'date'
 
-class Person < Struct.new(:first_name,:last_name,:birthdate,:num_of_drinks,:img_url,:license)
+class Person < ActiveRecord::Base
+  self.table_name="people"
 
   def name
     return "#{first_name} #{last_name}"
   end
 
   def birthday
-    birthdate.to_s
+    return birthdate.strftime("%m/%d/%Y")
   end
 
   def age
-    now = Time.now.utc.to_date
+    now = Time.now.to_date
     birthday=Date.parse(birthday)
-    (now.year - birthday.year) - (birthday.to_date.change(:year => now.year) > now ? 1 : 0)
+    (now.year - birthday.year) - (birthday.change(year: now.year) > now ? 1 : 0)
   end
 
   def have_a_drink
@@ -41,4 +42,3 @@ class Person < Struct.new(:first_name,:last_name,:birthdate,:num_of_drinks,:img_
   end
 
 end
-
