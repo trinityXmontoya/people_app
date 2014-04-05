@@ -12,6 +12,7 @@ class Person < ActiveRecord::Base
 
   def age
     now = Time.now.to_date
+    #calculate exact age by day
     return ((now.year) - (self.birthdate.year) - (self.birthdate.change(year: now.year) > now ? 1 : 0))
   end
 
@@ -37,7 +38,7 @@ class Person < ActiveRecord::Base
   end
 
   def sober_up
-    if num_of_drinks!=0 then self.num_of_drinks-=1 end
+    if num_of_drinks!=0 ; self.num_of_drinks-=1 end
   end
 
 end
