@@ -29,9 +29,10 @@ class Person < ActiveRecord::Base
 
   def drive_a_car
     case
-      when age < 18 then "Not yet youngin"
-      when age > 21 && (license && drunk?) then "Looks like a cab for you tonight"
-      when age >= 18 && license then true
+      when age < 18 ; "Not yet youngin"
+      when !license ; false
+      when age > 21 && (license && drunk?) ; "Looks like a cab for you tonight"
+      when age >= 18 && license ; true
     end
   end
 
