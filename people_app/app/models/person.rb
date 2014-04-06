@@ -2,7 +2,7 @@ require 'date'
 
 class Person
 
-  # set default person num_of_drinks to 0 in the database but to prevent any errors and remove database dependencies i am including this private method in the model
+  # set default person num_of_drinks to 0 in the database but to prevent any errors and remove database dependencies i am including this private method in the mode
   before_save :set_num_of_drinks
 
   def name
