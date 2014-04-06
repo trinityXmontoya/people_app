@@ -3,11 +3,11 @@ require 'date'
 class Person < ActiveRecord::Base
 
   def name
-    return "#{first_name} #{last_name}"
+    "#{first_name} #{last_name}"
   end
 
   def birthday
-    return birthdate.strftime("%m/%d/%Y")
+    birthdate.strftime("%m/%d/%Y")
   end
 
   def age
@@ -18,16 +18,16 @@ class Person < ActiveRecord::Base
 
   def have_a_drink
     # set default person num_of_drinks to 0 in the database but to prevent any errors and remove database dependencies i am including this line in the model as well
-    num_of_drinks || = 0
+    num_of_drinks || 0
     if num_of_drinks < 3
       (age > 21) ? (self.num_of_drinks += 1 and true) : "Wait a few years"
     else
-        return "Go home you're drunk"
+        "Go home you're drunk"
     end
   end
 
   def drunk?
-    num_of_drinks || = 0
+    num_of_drinks || 0
     num_of_drinks >= 3
   end
 
@@ -41,7 +41,7 @@ class Person < ActiveRecord::Base
   end
 
   def sober_up
-    num_of_drinks || = 0
+    num_of_drinks || 0
     if num_of_drinks!=0 ; self.num_of_drinks-=1 end
   end
 
