@@ -15,7 +15,7 @@ require 'spec_helper'
     #over 18, under 21, without license
     subject(:trinity){Person.create(first_name:"Trinity",last_name:"M",birthdate:'1993-07-02',img_url:'trinity.jpeg',license: false)}
     #under 18
-    subject(:lorde){Person.create(first_name:"Ella",last_name:"Yelich-O;Connor",birthdate:'1996-09-28',img_url:'http://bit.ly/ti8S6KF',license: false)}
+    subject(:lorde){Person.create(first_name:"Ella",last_name:"Yelich-O;Connor",birthdate:'1996-09-28',img_url:'http://bit.ly/ti8S6KF',license: true}
 
   describe '.name' do
     it "returns a string that is the person's full name" do
